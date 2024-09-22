@@ -170,6 +170,12 @@ func playWithStrings() {
 	fmt.Println("string replace: ", replace)
 }
 
+func playWithBoolean() {
+	launch := false
+	launchText := fmt.Sprintf("%v", launch)
+	fmt.Println("Ready for launch:", launchText)
+}
+
 func modifyArray(arr [3]int) {
 	arr[0] = 10                             // Modify the first element
 	fmt.Println("Inside modifyArray:", arr) // Prints the modified copy
@@ -295,6 +301,30 @@ func playWithPointer() {
 	fmt.Println("After:", num)  // Output: 50
 }
 
+func calcAge(name string) func(int) {
+	//  Anonymus/literal function
+	calcAge := func(yob int) { // calcAge function calculates and prints the age
+		fmt.Printf("I am %s, %d years old.\n", name, 2023-yob)
+	}
+	return calcAge
+}
+
+func countDown(num int) {
+	fmt.Println(num)
+	updatedNum := num - 1
+	if updatedNum > 0 {
+		countDown(updatedNum) // Recursive call
+	}
+}
+
+func playWithFunctions() {
+	// closure function example
+	greet := calcAge("John")
+	greet(1994)
+	// recursive function example
+	countDown(5)
+}
+
 func playWithCommandLineArguements() {
 	var someString, separator string
 	separator = "\n"
@@ -317,6 +347,9 @@ func PlayWithDataTypes() {
 	fmt.Println("function: playWithStrings")
 	playWithStrings()
 	fmt.Println("----------------------------------------------------")
+	fmt.Println("function: playWithBoolean")
+	playWithBoolean()
+	fmt.Println("----------------------------------------------------")
 	fmt.Println("function: playWithArrays")
 	playWithArrays()
 	fmt.Println("----------------------------------------------------")
@@ -325,6 +358,9 @@ func PlayWithDataTypes() {
 	fmt.Println("----------------------------------------------------")
 	fmt.Println("function: playWithPointer")
 	playWithPointer()
+	fmt.Println("----------------------------------------------------")
+	fmt.Println("function: playWithFunctions")
+	playWithFunctions()
 	fmt.Println("----------------------------------------------------")
 	fmt.Println("function: playWithCommandLineArguements")
 	playWithCommandLineArguements()

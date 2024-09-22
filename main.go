@@ -15,4 +15,7 @@ func main() {
 	fmt.Println("function: PlayWithDataTypes")
 	dataTypes.PlayWithDataTypes()
 	fmt.Println("----------------------------------------------------")
+	fmt.Println("function: playWithAssignments")
+	playWithAssignments()
+	fmt.Println("----------------------------------------------------")
 }
