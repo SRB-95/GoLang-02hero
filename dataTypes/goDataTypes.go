@@ -275,22 +275,33 @@ func modifyValue(ptr *int) {
 	*ptr = 50 // Modify the value via the pointer
 }
 
+func failedUpdate(g *int) {
+	x := 10
+	g = &x
+}
+
 func playWithPointer() {
 	var name string = "Happy"
-	fmt.Println("Memory Address: ", &name) // Memory Address:  0xc0000140a0
+	fmt.Println("Memory Address of name: ", &name) // Memory Address:  0xc0000140a0
 
 	// create the pointer variable
 	// var ptr *string // ptr declared but not initialize so the val is nil
 	// ptr = &name
+	var ptr *string = &name // declare & assign the memory address of name to the ptr
 	// var ptr = new(int) // Also we can create a ptr using new()
-	var ptr *string = &name // assign the memory address of name to the pointer
+	// fmt.Println("isNil: ", ptr == nil)           // false
+	// fmt.Println("Pointer default value: ", *ptr) // 0
 	// var ptr = &name //Also we can create a ptr w/o using *
-	fmt.Println("Value of pointer is", ptr)
-	fmt.Println("Address of the variable", &name)
+	fmt.Println("Value of pointer is: ", *ptr)
 
-	fmt.Println(*ptr) // * is used to get the value pointed by ptr
-	*ptr = "Soumya"   // Dereferencing and Modifying Values
-	fmt.Println(*ptr)
+	fmt.Println("Before ptr value: ", *ptr) // * is used to get the value pointed by ptr
+	*ptr = "Soumya"                         // Dereferencing and Modifying Values
+	fmt.Println("After ptr value: ", *ptr)
+	fmt.Println("\n---------------->")
+	fmt.Println("You can only reassign the value if there was a value already assigned to the pointer.")
+	var f *int // f is nil
+	failedUpdate(f)
+	fmt.Println(f)
 	fmt.Println("\n---------------->")
 	// In Go, when you pass variables to functions, they are passed by value by default,
 	// meaning the function receives a copy of the variable. However, if you pass a pointer to a variable,
