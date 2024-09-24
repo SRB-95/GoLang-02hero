@@ -301,6 +301,10 @@ func playWithPointer() {
 	fmt.Println("After:", num)  // Output: 50
 }
 
+func changeIt(ptr *int) {
+	*ptr = 0
+}
+
 func calcAge(name string) func(int) {
 	//  Anonymus/literal function
 	calcAge := func(yob int) { // calcAge function calculates and prints the age
@@ -317,12 +321,50 @@ func countDown(num int) {
 	}
 }
 
+func variadic(args ...int) int { // (...)ellipsis
+	total := 0
+	for _, val := range args {
+		total += val
+	}
+	fmt.Println("Total: ", total)
+	return total
+}
+
+func riskyDivision(a, b int) {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered from:", r)
+		}
+	}()
+
+	if b == 0 {
+		panic("division by zero")
+	} else {
+		fmt.Println("Result:", a/b)
+	}
+}
+
 func playWithFunctions() {
-	// closure function example
+	fmt.Println("Function pass by reference")
+	x := 5
+	fmt.Println("First", x)
+	changeIt(&x)
+	fmt.Println("Then", x)
+	fmt.Println("\n---------------->")
+	fmt.Println("closure function example")
 	greet := calcAge("John")
 	greet(1994)
-	// recursive function example
+	fmt.Println("\n---------------->")
+	fmt.Println("recursive function example")
 	countDown(5)
+	fmt.Println("\n---------------->")
+	fmt.Println("Variadic Function")
+	variadic(1, 2, 3)
+	fmt.Println("\n---------------->")
+	fmt.Println("Function: playWithDeferPanicRecover")
+	fmt.Println("Start")
+	riskyDivision(10, 0)
+	fmt.Println("End")
 }
 
 func playWithCommandLineArguements() {

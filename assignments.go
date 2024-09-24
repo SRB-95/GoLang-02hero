@@ -69,6 +69,13 @@ func quickSort(arr []int) []int {
 	return append(append(quickSort(left), lastElement), quickSort(right)...)
 }
 
+func factorial(num uint) uint {
+	if num == 0 {
+		return 1
+	}
+	return num * factorial(num-1)
+}
+
 func playWithAssignments() {
 	getRandomInt()
 	fmt.Println("----------------------------------------------------")
@@ -79,5 +86,8 @@ func playWithAssignments() {
 	arr := []int{3, 6, 8, 10, 1, 2, 1}
 	sortedArr := quickSort(arr)
 	fmt.Println("Sorted array:", sortedArr)
+	fmt.Println("----------------------------------------------------")
+	fmt.Println("function:  Factorial Number")
+	fmt.Println(factorial(5))
 	fmt.Println("----------------------------------------------------")
 }
