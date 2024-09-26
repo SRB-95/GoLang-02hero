@@ -76,6 +76,8 @@ func factorial(num uint) uint {
 	return num * factorial(num-1)
 }
 
+// Day6: 25/9/24
+
 func playWithAssignments() {
 	getRandomInt()
 	fmt.Println("----------------------------------------------------")

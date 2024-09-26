@@ -12,9 +12,11 @@ func helloGo() {
 func main() {
 	helloGo()
 	fmt.Println("----------------------------------------------------")
+
 	fmt.Println("function: PlayWithDataTypes")
 	dataTypes.PlayWithDataTypes()
 	fmt.Println("----------------------------------------------------")
+
 	fmt.Println("function: playWithAssignments")
 	playWithAssignments()
 	fmt.Println("----------------------------------------------------")
