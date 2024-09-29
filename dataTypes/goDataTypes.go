@@ -21,9 +21,9 @@ func playWithVarAndConst() {
 	var f = boilingf
 	var c = (f - 32) * 5 / 9
 	fmt.Printf("\nBoiling Point: %g Farenheit", f)
-	fmt.Printf("\nBoiling Point: %g Centiigrade", c)
+	fmt.Printf("\nBoiling Point: %g Centigrade", c)
 	var boilingC = fToC(boilingf)
-	fmt.Printf("\nBoiling Point:-> %g Centiigrade", boilingC)
+	fmt.Printf("\nBoiling Point:-> %g Centigrade", boilingC)
 
 	const first, second float64 = 99.99, 88.88             // Multiple variable declaration
 	fmt.Printf("\nFirst: %g, Second: %g", first, second)   // Format specifier %g removes extra 0 i.e 99.9000
@@ -174,101 +174,6 @@ func playWithBoolean() {
 	launch := false
 	launchText := fmt.Sprintf("%v", launch)
 	fmt.Println("Ready for launch:", launchText)
-}
-
-func modifyArray(arr [3]int) {
-	arr[0] = 10                             // Modify the first element
-	fmt.Println("Inside modifyArray:", arr) // Prints the modified copy
-}
-
-// Function to modify the array using a pointer
-func modifyArrayByReference(arr *[3]int) {
-	arr[0] = 100 // Modify the first element
-	fmt.Println("Inside modifyArrayByReference:", arr)
-}
-
-// Function to modify an array element using a pointer
-func modifyElementByReference(elem *int) {
-	*elem = 200 // Modify the element via pointer
-	fmt.Println("Inside modifyElementByReference:", *elem)
-}
-
-func playWithArrays() {
-	// Array declare & initialization
-	var arr1 [3]int // [0 0 0], An array is declared with a size (e.g., [3]int), and its size is part of its type.
-	arr1[0] = 10
-	arr1[1] = 20
-	arr1[2] = 30
-	fmt.Println("Arr1: ", arr1)
-	fmt.Println("\n---------------->")
-	arr2 := [...]int{1, 2, 3, 4}
-	fmt.Println("Arr2: ", arr2)
-	fmt.Println("\n---------------->")
-	arr3 := [5]int{1, 2, 3, 4, 5}
-	for _, ele := range arr3 { // if index is not in used can be replace with _
-		fmt.Println(ele)
-	}
-	fmt.Println("Arr3 first element: ", arr3[0])
-	fmt.Println("Arr3 element range: ", arr3[:3]) // [1 2 3]
-	fmt.Println("Arr3 element range: ", arr3[3:]) // [4 5]
-	copyArr := arr3                               // Copying aray
-	copyArr[0] = 10                               // modifying arr3 does not affect arr1
-	fmt.Println(copyArr)                          // [10 2 3 4 5]
-	fmt.Println(len(arr3), arr3)                  // [1 2 3 4 5]
-	// in Go array is passed by value. This means that when you pass an array to a function, Go creates a copy of the array, and any changes made to the array inside the function do not affect the original array.
-	fmt.Println("\n---------------->")
-	aa := [2]int{10, 20}
-	bb := [...]int{10, 20}
-	fmt.Println("aa is Equal to bb: ", aa == bb) // true
-	// In Go lang first will comapre the type, if matches then will compare the value or any operation will happen
-	fmt.Println("\n---------------->")
-	someArr := [...]int{0: 100, 2: 200, 300}
-	fmt.Println("Controll on index of an array: ", someArr)
-	fmt.Println("Length of an array: ", len(someArr))
-	fmt.Printf("Type of an array: %T", someArr)
-	fmt.Println("\n---------------->")
-	// in Go, both arrays and their elements are passed by value.
-	// This means that when you pass an array to a function, a copy of the entire array is made, and changes to this copy do not affect the original array.
-	// Similarly, when you access or modify an array element, you are working with a copy of the value unless you use pointers.
-	arr4 := [3]int{9, 99, 999} // Original array
-	modifyArray(arr4)          // Passing array to the function
-	fmt.Println("Outside modifyArray:", arr4)
-	fmt.Println("\n---------------->")
-	// If you want to modify the original array or elements, you need to pass a pointer to the array or its elements:
-	arr5 := [3]int{1, 2, 3}
-
-	// Passing the array by reference
-	modifyArrayByReference(&arr5)
-	fmt.Println("Outside modifyArrayByReference:", arr5) // Now the array is modified
-
-	// Passing the array element by reference
-	modifyElementByReference(&arr5[1])
-	fmt.Println("Outside modifyElementByReference:", arr5[1]) // The specific element is modified
-}
-
-func playWithSlices() {
-	slice := make([]int, 3, 5) // By using make() function we can creates a slice of length 3 and capacity
-	fmt.Println(slice)         // Output: [0 0 0] (initialized with zero values)
-	fmt.Println("Length of slice: ", len(slice))
-	fmt.Println("Capacity of slice: ", cap(slice))
-	slice = append(slice, 4, 5) //  Adds new elements to the slice. If the slice's capacity is not enough.
-	// When length & capasity becomes same, then automaically capacity besomes doubled
-	fmt.Println(slice)
-	copyArr := []int{10, 20, 30, 40, 50}
-	copy(copyArr, slice) // deep copy
-	fmt.Println("Copy Arr: ", copyArr)
-	fmt.Println("\n---------------->")
-	slice1 := [...]int{10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
-	some1 := slice1[0:4]
-	fmt.Println(some1)
-	some2 := slice1[4:9]
-	fmt.Println(some2)
-	some3 := slice1[:5]
-	fmt.Println(some3)
-	some4 := slice1[6:]
-	fmt.Println(some4)
-	some5 := slice1[:]
-	fmt.Println(some5)
 }
 
 func modifyValue(ptr *int) {
@@ -449,25 +354,36 @@ func playWithCommandLineArguements() {
 func PlayWithDataTypes() {
 	fmt.Println("function: playWithVarAndConst")
 	playWithVarAndConst()
-	fmt.Println("\n----------------------------------------------------")
+	fmt.Println("\n----------------------------------------:")
+
 	fmt.Println("function: playWithTypes")
 	playWithTypes()
-	fmt.Println("----------------------------------------------------")
+	fmt.Println("------------------------------------------:")
+
 	fmt.Println("function: playWithIntegers")
 	playWithIntegers()
-	fmt.Println("----------------------------------------------------")
+	fmt.Println("------------------------------------------:")
+
 	fmt.Println("function: playWithStrings")
 	playWithStrings()
 	fmt.Println("----------------------------------------------------")
+
 	fmt.Println("function: playWithBoolean")
 	playWithBoolean()
 	fmt.Println("----------------------------------------------------")
+
 	fmt.Println("function: playWithArrays")
 	playWithArrays()
 	fmt.Println("----------------------------------------------------")
+
 	fmt.Println("function: playWithSlices")
 	playWithSlices()
 	fmt.Println("----------------------------------------------------")
+
+	fmt.Println("function: playWithMaps")
+	playWithMaps()
+	fmt.Println("----------------------------------------------------")
+
 	fmt.Println("function: playWithPointer")
 	playWithPointer()
 	fmt.Println("----------------------------------------------------")

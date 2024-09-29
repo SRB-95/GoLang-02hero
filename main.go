@@ -11,13 +11,13 @@ func helloGo() {
 
 func main() {
 	helloGo()
-	fmt.Println("----------------------------------------------------")
+	fmt.Println("-----------------------------------: Hell0 Go :------------------------------------>")
 
 	fmt.Println("function: PlayWithDataTypes")
 	dataTypes.PlayWithDataTypes()
-	fmt.Println("----------------------------------------------------")
+	fmt.Println("-----------------------------------: Data Types :------------------------------------>")
 
 	fmt.Println("function: playWithAssignments")
-	playWithAssignments()
+	// playWithAssignments()
 	fmt.Println("----------------------------------------------------")
 }
