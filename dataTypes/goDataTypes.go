@@ -2,7 +2,6 @@ package dataTypes
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -176,181 +175,6 @@ func playWithBoolean() {
 	fmt.Println("Ready for launch:", launchText)
 }
 
-func modifyValue(ptr *int) {
-	*ptr = 50 // Modify the value via the pointer
-}
-
-func failedUpdate(g *int) {
-	x := 10
-	g = &x
-}
-
-func playWithPointer() {
-	var name string = "Happy"
-	fmt.Println("Memory Address of name: ", &name) // Memory Address:  0xc0000140a0
-
-	// create the pointer variable
-	// var ptr *string // ptr declared but not initialize so the val is nil
-	// ptr = &name
-	var ptr *string = &name // declare & assign the memory address of name to the ptr
-	// var ptr = new(int) // Also we can create a ptr using new()
-	// fmt.Println("isNil: ", ptr == nil)           // false
-	// fmt.Println("Pointer default value: ", *ptr) // 0
-	// var ptr = &name //Also we can create a ptr w/o using *
-	fmt.Println("Value of pointer is: ", *ptr)
-
-	fmt.Println("Before ptr value: ", *ptr) // * is used to get the value pointed by ptr
-	*ptr = "Soumya"                         // Dereferencing and Modifying Values
-	fmt.Println("After ptr value: ", *ptr)
-
-	fmt.Println("\n---------------->")
-
-	fmt.Println("You can only reassign the value if there was a value already assigned to the pointer.")
-	var f *int // f is nil
-	failedUpdate(f)
-	fmt.Println(f)
-
-	fmt.Println("\n---------------->")
-
-	// In Go, when you pass variables to functions, they are passed by value by default,
-	// meaning the function receives a copy of the variable. However, if you pass a pointer to a variable,
-	// the function can modify the original value (pass by reference).
-	num := 10
-	fmt.Println("Before:", num) // Output: 10
-	modifyValue(&num)           // Pass the address of num to the function
-	fmt.Println("After:", num)  // Output: 50
-}
-
-func changeIt(ptr *int) {
-	*ptr = 0
-}
-
-func calcAge(name string) func(int) {
-	//  Anonymus/literal function
-	calcAge := func(yob int) { // calcAge function calculates and prints the age
-		fmt.Printf("I am %s, %d years old.\n", name, 2023-yob)
-	}
-	return calcAge
-}
-
-func countDown(num int) {
-	fmt.Println(num)
-	updatedNum := num - 1
-	if updatedNum > 0 {
-		countDown(updatedNum) // Recursive call
-	}
-}
-
-func variadic(args ...int) int { // (...)ellipsis
-	total := 0
-	for _, val := range args {
-		total += val
-	}
-	fmt.Println("Total: ", total)
-	return total
-}
-
-func firstFunction() {
-	fmt.Println("First function called")
-}
-
-func secondFunction() {
-	fmt.Println("Second function called")
-}
-
-func thirdFunction() {
-	fmt.Println("Third function called")
-}
-
-func playWithDeferPanicRecover() {
-	// defer kew word delays Execution of statemant till End of Enclosing function
-	defer firstFunction()
-	secondFunction()
-	defer thirdFunction()
-}
-
-func someFunction() (some int) {
-	defer func() { some++ }()
-	return 1
-}
-
-func platWithTrickyDefer() {
-	result := someFunction()
-	fmt.Println("Result: ", result)
-}
-
-func applyOperation(a, b int, operation func(a, b int) int) int {
-	return operation(a, b)
-}
-
-func add(a, b int) int {
-	return a + b
-}
-
-func multiply(a, b int) int {
-	return a * b
-}
-
-func createMultiplier(factor int) func(int) int {
-	return func(x int) int {
-		return x * factor
-	}
-}
-
-func playWithHigherOrderFunction() {
-	// Passing a Function as an Argument
-	sum := applyOperation(3, 5, add)
-	fmt.Println("Sum: ", sum)
-
-	mul := applyOperation(3, 5, multiply)
-	fmt.Println("Multiplication: ", mul)
-
-	// Returning a Function
-	double := createMultiplier(2)
-	fmt.Println("Double func: ", double(5))
-}
-
-func playWithFunctions() {
-	fmt.Println("Function pass by reference")
-	x := 5
-	fmt.Println("First", x)
-	changeIt(&x)
-	fmt.Println("Then", x)
-	fmt.Println("\n---------------->")
-
-	fmt.Println("closure function example")
-	greet := calcAge("John")
-	greet(1994)
-	fmt.Println("\n---------------->")
-
-	fmt.Println("recursive function example")
-	countDown(5)
-	fmt.Println("\n---------------->")
-
-	fmt.Println("Variadic Function")
-	variadic(1, 2, 3)
-	fmt.Println("\n---------------->")
-
-	fmt.Println("Function: playWithDeferPanicRecover") // Last In First Out
-	playWithDeferPanicRecover()
-	platWithTrickyDefer()
-	fmt.Println("\n---------------->")
-
-	fmt.Println("Function: playWithHigherOrderFunction")
-	playWithHigherOrderFunction()
-	fmt.Println("\n---------------->")
-
-}
-
-func playWithCommandLineArguements() {
-	var someString, separator string
-	separator = "\n"
-	var args = os.Args
-	for i := 0; i < len(args); i++ {
-		someString = someString + separator + args[i]
-	}
-}
-
 func PlayWithDataTypes() {
 	fmt.Println("function: playWithVarAndConst")
 	playWithVarAndConst()
@@ -385,12 +209,6 @@ func PlayWithDataTypes() {
 	fmt.Println("----------------------------------------------------")
 
 	fmt.Println("function: playWithPointer")
-	playWithPointer()
-	fmt.Println("----------------------------------------------------")
-	fmt.Println("function: playWithFunctions")
-	playWithFunctions()
-	fmt.Println("----------------------------------------------------")
-	fmt.Println("function: playWithCommandLineArguements")
-	playWithCommandLineArguements()
+	playWithPointers()
 	fmt.Println("----------------------------------------------------")
 }
