@@ -120,4 +120,8 @@ func PlayWithFunctions() {
 	fmt.Println("Function: playWithHigherOrderFunction")
 	playWithHigherOrderFunction()
 	fmt.Println("\n---------------->")
+
+	fmt.Println("Function: Generic functions")
+	playWithGeneric()
+	fmt.Println("\n---------------->")
 }

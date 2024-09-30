@@ -1,4 +1,4 @@
-package main
+package functions
 
 import (
 	"fmt"
@@ -130,7 +130,7 @@ func playWithGenericPrintSlice() {
 
 }
 
-func main() {
+func playWithGeneric() {
 	fmt.Println("function: playWithGenerics")
 	playWithGenerics()
 	fmt.Println("\n---------------->")
