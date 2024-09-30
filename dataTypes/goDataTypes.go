@@ -211,4 +211,12 @@ func PlayWithDataTypes() {
 	fmt.Println("function: playWithPointer")
 	playWithPointers()
 	fmt.Println("----------------------------------------------------")
+
+	fmt.Println("function: playWithStruct")
+	playWithStruct()
+	fmt.Println("----------------------------------------------------")
+
+	fmt.Println("function: playWithSet")
+	playWithIntSets()
+	fmt.Println("----------------------------------------------------")
 }

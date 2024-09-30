@@ -5,6 +5,7 @@ import (
 	"golang-02hero/commandLineArgs"
 	"golang-02hero/dataTypes"
 	"golang-02hero/functions"
+	"golang-02hero/routes"
 )
 
 func helloGo() {
@@ -23,9 +24,13 @@ func main() {
 	functions.PlayWithFunctions()
 	fmt.Println("-----------------------------------: Functions :----------------------------------->")
 
-	fmt.Println("function: PlayWithCommandLineArgs")
+	fmt.Println("function: Play With Command Line Arguements")
 	commandLineArgs.PlayWithCommandLineArgs()
 	fmt.Println("-------------------------------: Command Line Args :------------------------------->")
+
+	fmt.Println("function: Play With Routing")
+	routes.PlayWithRouting()
+	fmt.Println("------------------------------------: Routing :------------------------------------>")
 
 	fmt.Println("function: playWithAssignments")
 	playWithAssignments()
