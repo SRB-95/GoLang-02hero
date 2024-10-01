@@ -1,4 +1,7 @@
 # GoLang-02hero
+# Formaters
+    %d: for formating integers
+    %s: for formating string
 
 Data Types:
     Var & Const

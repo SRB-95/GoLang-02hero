@@ -80,16 +80,24 @@ func factorial(num uint) uint {
 
 func playWithAssignments() {
 	getRandomInt()
-	fmt.Println("----------------------------------------------------")
+	fmt.Println("---------------->")
+
 	leapYear()
-	fmt.Println("\n----------------------------------------------------")
+	fmt.Println("---------------->")
+
 	switchCaase()
-	fmt.Println("----------------------------------------------------")
+	fmt.Println("---------------->")
+
 	arr := []int{3, 6, 8, 10, 1, 2, 1}
 	sortedArr := quickSort(arr)
 	fmt.Println("Sorted array:", sortedArr)
-	fmt.Println("----------------------------------------------------")
+	fmt.Println("---------------->")
+
 	fmt.Println("function:  Factorial Number")
 	fmt.Println(factorial(5))
-	fmt.Println("----------------------------------------------------")
+	fmt.Println("---------------->")
+
+	fmt.Println("function:  Fibinasci Series")
+	// check playWithGoRoutines.go file
+	fmt.Println("---------------->")
 }
